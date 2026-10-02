@@ -38,7 +38,6 @@ Highly recommend using Chromium-based browsers, e.g., [Chrome][chrome] or [Micro
 - Export to A4 and US Letter paper sizes
 - Customize page margins, theme colors, line heights, fonts, etc.
 - Add icons easily via [Iconify](https://github.com/iconify/iconify) (search icons on [Icônes](https://icones.js.org/))
-- Fix legacy Iconify markup from older resumes and save the migrated content
 - TeX support ([KaTeX](https://github.com/KaTeX/KaTeX))
 - Cross-referencing (useful for academic CVs)
 - Case correction (e.g., `Github` → `GitHub`)

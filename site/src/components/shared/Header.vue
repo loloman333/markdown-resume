@@ -79,6 +79,16 @@
           :label="$t('images.my_images')"
           icon="i-ic:outline-photo-library"
         />
+        <NavItem
+          :link="$nuxt.$localePath('/templates')"
+          label="My Templates"
+          icon="i-carbon:template"
+        />
+        <NavItem
+          :link="$nuxt.$localePath('/data')"
+          label="My Data"
+          icon="i-carbon:json-reference"
+        />
         <div class="sidebar-info-group">
           <div class="sidebar-section-label sidebar-label">
             {{ $t("nav.information") }}

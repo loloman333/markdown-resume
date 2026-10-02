@@ -49,6 +49,56 @@
         </div>
       </section>
 
+      <!-- Recent Templates Section -->
+      <section class="mb-14">
+        <div class="flex items-center justify-between mb-6">
+          <div class="hstack gap-3">
+            <span class="circle size-9 flex-shrink-0 bg-blue-500 text-white">
+              <span i-carbon:template text-lg />
+            </span>
+            <div>
+              <h2 class="text-2xl font-bold">My Templates</h2>
+              <p class="mt-0.5 text-sm text-light-c">Markdown files used to generate resumes.</p>
+            </div>
+          </div>
+          <nuxt-link class="hstack gap-1.5 px-4 py-2 rounded-lg border border-c text-sm font-medium hover:bg-darker-c transition-colors" :to="$nuxt.$localePath('/templates')">
+            <span>See all</span>
+            <span i-tabler:arrow-right text-base />
+          </nuxt-link>
+        </div>
+        <div class="home-file-row">
+          <nuxt-link v-for="template in recentTemplates" :key="template.id" class="home-file-card" :to="{ path: $nuxt.$localePath('/templates/edit'), query: { id: template.id } }">
+            <span class="home-file-icon home-file-icon-template"><span i-carbon:template /></span>
+            <span class="min-w-0"><strong>{{ localized(template.name) }}</strong><small>{{ localized(template.description) }}</small></span>
+          </nuxt-link>
+        </div>
+      </section>
+
+      <!-- Recent Data Section -->
+      <section class="mb-14">
+        <div class="flex items-center justify-between mb-6">
+          <div class="hstack gap-3">
+            <span class="circle size-9 flex-shrink-0 bg-emerald-500 text-white">
+              <span i-carbon:json-reference text-lg />
+            </span>
+            <div>
+              <h2 class="text-2xl font-bold">My Data</h2>
+              <p class="mt-0.5 text-sm text-light-c">Structured JSON content for your resumes.</p>
+            </div>
+          </div>
+          <nuxt-link class="hstack gap-1.5 px-4 py-2 rounded-lg border border-c text-sm font-medium hover:bg-darker-c transition-colors" :to="$nuxt.$localePath('/data')">
+            <span>See all</span>
+            <span i-tabler:arrow-right text-base />
+          </nuxt-link>
+        </div>
+        <div class="home-file-row">
+          <nuxt-link v-for="record in recentData" :key="record.id" class="home-file-card" :to="{ path: $nuxt.$localePath('/data/edit'), query: { id: record.id } }">
+            <span class="home-file-icon home-file-icon-data"><span i-carbon:json-reference /></span>
+            <span class="min-w-0"><strong>{{ record.name }}</strong><small>{{ localized(record.description) }}</small></span>
+          </nuxt-link>
+        </div>
+      </section>
+
       <!-- Recent Images Section -->
       <section>
         <div class="flex items-center justify-between mb-6">
@@ -104,14 +154,21 @@
 
 <script lang="ts" setup>
 import type { ResumeListItem, ImageListItem } from "~/types";
+import type { DataRecord, LocalizedText, TemplateFileRecord } from "~/utils/templateLibrary";
 
 const RECENT_COUNT = 5;
 
 const resumeList = ref<ResumeListItem[]>();
 const imageList = ref<ImageListItem[]>();
+const templateList = ref<TemplateFileRecord[]>();
+const dataList = ref<DataRecord[]>();
 
 const recentResumes = computed(() => resumeList.value?.slice(0, RECENT_COUNT));
 const recentImages = computed(() => imageList.value?.slice(0, RECENT_COUNT));
+const recentTemplates = computed(() => templateList.value?.slice(0, RECENT_COUNT));
+const recentData = computed(() => dataList.value?.slice(0, RECENT_COUNT));
+const { locale } = useI18n();
+const localized = (value: LocalizedText) => value[locale.value] || value.en || Object.values(value)[0] || "";
 
 const loadResumes = async () => {
   resumeList.value = await getResumeList();
@@ -121,8 +178,16 @@ const loadImages = async () => {
   imageList.value = await getImageList(false);
 };
 
+const loadTemplates = async () => {
+  templateList.value = await getTemplateList();
+};
+
+const loadData = async () => {
+  dataList.value = await getDataList();
+};
+
 onMounted(async () => {
-  await Promise.all([loadResumes(), loadImages()]);
+  await Promise.all([loadResumes(), loadImages(), loadTemplates(), loadData()]);
 });
 </script>
 
@@ -158,5 +223,38 @@ onMounted(async () => {
 
 .images-row {
   @apply flex flex-nowrap gap-6 pr-3;
+}
+
+.home-file-row {
+  @apply grid gap-4 md:grid-cols-2 xl:grid-cols-3;
+}
+
+.home-file-card {
+  @apply flex min-w-0 items-center gap-3 rounded-xl border border-c bg-c p-4 transition hover:-translate-y-0.5 hover:shadow-lg;
+}
+
+.home-file-card strong,
+.home-file-card small {
+  @apply block truncate;
+}
+
+.home-file-card strong {
+  @apply text-sm font-semibold;
+}
+
+.home-file-card small {
+  @apply mt-1 text-xs text-light-c;
+}
+
+.home-file-icon {
+  @apply flex size-10 flex-none items-center justify-center rounded-lg;
+}
+
+.home-file-icon-template {
+  @apply bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300;
+}
+
+.home-file-icon-data {
+  @apply bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300;
 }
 </style>

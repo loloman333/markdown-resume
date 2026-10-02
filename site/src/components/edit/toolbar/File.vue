@@ -18,6 +18,8 @@
       </template>
     </Dialog>
 
+    <TemplateParser />
+
     <hr border-dashed border-c my-1 />
 
     <li class="dropdown-li space-x-1.5 rounded" role="button" @click="exportPDF">

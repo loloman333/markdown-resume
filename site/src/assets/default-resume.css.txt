@@ -2,6 +2,10 @@
 
 /* Basic */
 
+a {
+  color: rgb(15, 73, 123) !important;
+}
+
 #PREVIEW_SELECTOR {
   background-color: white;
   color: black;

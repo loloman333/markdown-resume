@@ -1,0 +1,114 @@
+{
+  "locale": "en",
+  "profile": {
+    "name": { "de": "Alex Beispiel", "en": "Alex Example" },
+    "profileInfo": [
+      {
+        "id": "location",
+        "enabled": true,
+        "icon": "ic:outline-location-on",
+        "text": { "de": "Beispielstadt", "en": "Example City" },
+        "url": ""
+      },
+      {
+        "id": "email",
+        "enabled": true,
+        "icon": "tabler:mail",
+        "text": { "de": "alex@example.com", "en": "alex@example.com" },
+        "url": "mailto:alex@example.com"
+      }
+    ],
+    "photo": { "enabled": false, "src": "" }
+  },
+  "education": {
+    "enabled": true,
+    "title": { "de": "Ausbildung", "en": "Education" },
+    "entries": [
+      {
+        "id": "example-education",
+        "enabled": true,
+        "degree": {
+          "de": "Bachelor in Informatik",
+          "en": "Bachelor of Science in Computer Science"
+        },
+        "period": { "de": "2022 - 2026", "en": "2022 - 2026" },
+        "institutions": [
+          { "name": { "de": "Beispieluniversität", "en": "Example University" } }
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "enabled": true,
+    "title": { "de": "Berufserfahrung", "en": "Experience" },
+    "entries": [
+      {
+        "id": "example-experience",
+        "enabled": true,
+        "role": { "de": "Softwareentwickler", "en": "Software Developer" },
+        "period": { "de": "2024 - heute", "en": "2024 - Present" },
+        "bullets": [
+          {
+            "text": {
+              "de": "Kleine Webanwendungen und interne Werkzeuge entwickelt.",
+              "en": "Built small web applications and internal tools."
+            }
+          },
+          {
+            "text": {
+              "de": "Mit einem Team Funktionen geplant, getestet und veröffentlicht.",
+              "en": "Worked with a team to plan, test, and ship features."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "enabled": true,
+    "title": { "de": "Fähigkeiten", "en": "Skills" },
+    "entries": [
+      {
+        "id": "typescript",
+        "enabled": true,
+        "label": { "de": "TypeScript und JavaScript", "en": "TypeScript and JavaScript" },
+        "description": { "de": "", "en": "" },
+        "icon": "tabler:code",
+        "lineBreak": true
+      },
+      {
+        "id": "web",
+        "enabled": true,
+        "label": { "de": "HTML und CSS", "en": "HTML and CSS" },
+        "description": { "de": "", "en": "" },
+        "icon": "tabler:brand-html5",
+        "lineBreak": true
+      },
+      {
+        "id": "git",
+        "enabled": true,
+        "label": { "de": "Git und Teamarbeit", "en": "Git and collaborative development" },
+        "description": { "de": "", "en": "" },
+        "icon": "tabler:git-branch",
+        "lineBreak": true
+      }
+    ]
+  },
+  "hobbies": {
+    "enabled": true,
+    "title": { "de": "Interessen", "en": "Interests" },
+    "groups": [
+      {
+        "id": "free-time",
+        "enabled": true,
+        "title": { "de": "Freizeit", "en": "Free time" },
+        "entries": [
+          { "id": "reading", "enabled": true, "label": { "de": "Lesen", "en": "Reading" } },
+          { "id": "hiking", "enabled": true, "label": { "de": "Wandern", "en": "Hiking" } },
+          { "id": "photography", "enabled": true, "label": { "de": "Fotografie", "en": "Photography" } }
+        ]
+      }
+    ]
+  },
+  "layout": { "skillsAndHobbiesTwoColumn": true }
+}

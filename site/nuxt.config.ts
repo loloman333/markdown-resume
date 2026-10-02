@@ -88,7 +88,10 @@ export default defineNuxtConfig({
   pwa,
 
   nitro: {
-    runtimeConfig: {}
+    runtimeConfig: {},
+    prerender: {
+      routes: ["/templates/edit", "/en/templates/edit", "/id/templates/edit"]
+    }
   },
 
   gtag: {
